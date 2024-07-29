@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class StringPermutations {
+
+    // Function to swap characters at positions i and j in a StringBuilder
+    public static void swap(StringBuilder sb, int i, int j) {
+        char temp = sb.charAt(i);
+        sb.setCharAt(i, sb.charAt(j));
+        sb.setCharAt(j, temp);
+    }
+
+    // Function to generate permutations recursively
+    public static void generatePermutations(StringBuilder sb, int left, int right) {
+        if (left == right) {
+            System.out.println(sb.toString());
+            return;
+        }
+
+        for (int i = left; i <= right; i++) {
+            swap(sb, left, i);
+            generatePermutations(sb, left + 1, right);
+            swap(sb, left, i); // Backtrack
+        }
+    }
+
+    // Function to initiate generation and printing of permutations
+    public static void printPermutations(String input) {
+        StringBuilder sb = new StringBuilder(input);
+        generatePermutations(sb, 0, sb.length() - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        System.out.println("All permutations of the string:");
+        printPermutations(input);
+    }
+}
