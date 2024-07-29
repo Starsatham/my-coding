@@ -1,0 +1,46 @@
+import java.util.*;
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner p=new Scanner(System.in);
+        int a=p.nextInt();
+        TreeSet <Character> ts=new TreeSet<>();
+        for(int i=0;i<a;i++)
+        {
+            ts.add(p.next().charAt(0));
+        }
+        char ch = p.next().charAt(0);
+        ts.remove(ch);
+        for(char cc : ts)
+        {
+            System.out.print(cc+" ");
+        }
+    }
+}
+
+
+// You are using Java
+import java.util.*;
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner p=new Scanner(System.in);
+        String a=p.nextLine();
+        String b=p.nextLine();
+        
+        int m=a.length();
+        int n=b.length(),l=n-1;
+        for(int i=0;i<=m-n;i++)
+        {
+            if(a.substring(i,i+n).equals(b))
+            {
+                System.out.println("Pattern found at index "+i);
+            }
+         
+        }
+       
+    }
+}
+

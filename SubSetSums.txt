@@ -1,0 +1,48 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int flag=0;
+void subsetsum(int i,int arr[],int n,int targetsum,vector<int>&v)
+{
+    if(targetsum==0)
+    {
+        flag=1;
+      cout<<"[ ";
+      for(int i=0;i<v.size();i++)
+      {
+          cout<<v[i]<<" ";
+      }
+      cout<<"]";
+      return;
+    }
+    if(i==n){
+    return;
+    }
+    
+    subsetsum(i+1,arr,n,targetsum,v);
+    
+    
+    if(arr[i]<=targetsum)
+    {
+          
+        v.push_back(arr[i]);
+        
+        subsetsum(i+1,arr,n,targetsum-arr[i],v);
+        
+        v.pop_back();
+    }
+}
+int main()
+{
+    int a;cin>>a;
+    int arr[a];
+    for(int i=0;i<a;i++)
+    cin>>arr[i];
+    
+    int targetsum;cin>>targetsum;
+    vector<int> v;
+    
+    subsetsum(0,arr,a,targetsum,v);
+    if(flag==0)
+    cout<<"No subset sum";
+}

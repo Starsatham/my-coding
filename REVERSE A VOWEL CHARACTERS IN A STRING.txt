@@ -1,0 +1,41 @@
+REVERSE A VOWEL CHARACTERS IN A STRING:--
+
+public class ReverseVowels {
+    public static void main(String[] args) {
+        String originalString = "Hello, World!";
+        String reversedVowelsString = reverseVowels(originalString);
+        System.out.println("Original String: " + originalString);
+        System.out.println("Reversed Vowels String: " + reversedVowelsString);
+    }
+
+    public static String reverseVowels(String str) {
+        char[] charArray = str.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+
+        while (left < right) {
+            // Find the next vowel from the left
+            while (left < right && !isVowel(charArray[left])) {
+                left++;
+            }
+            // Find the next vowel from the right
+            while (left < right && !isVowel(charArray[right])) {
+                right--;
+            }
+            // Swap the vowels
+            if (left < right) {
+                char temp = charArray[left];
+                charArray[left] = charArray[right];
+                charArray[right] = temp;
+                left++;
+                right--;
+            }
+        }
+
+        return new String(charArray);
+    }
+
+    public static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1;
+    }
+}
